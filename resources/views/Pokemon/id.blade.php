@@ -30,6 +30,7 @@
     </tbody>
 </table> --}}
 
+<img src="{{ asset('poke-img/images/poke-'.$poke->id.'.jpg') }}" alt="Icono de {{ $poke->name }}">
 
 <div class="form-group">
     
