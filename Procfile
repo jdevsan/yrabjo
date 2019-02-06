@@ -1,1 +1,1 @@
-web: vendor/bin/laramon public/
+web: vendor/bin/heroku-php-apache2 public/
