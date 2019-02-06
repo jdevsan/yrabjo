@@ -1,7 +1,7 @@
 @extends('Template.basic')
 @section('content')
 
-<form action="{{ route('pokemon.nuevo') }}" method="post" enctype="multipart/form-data">
+<form id="formu" method="post">
 
 @csrf
 
@@ -70,7 +70,7 @@
         <br>
         <br>
         
-                <button id="add" class="btn btn-info" type="submit">Agregar Pokemón</button>
+                <button id="add" onclick="editarDatos(event);" class="btn btn-info" type="submit">Agregar Pokemón</button>
         
       
         
@@ -85,14 +85,77 @@
 
 
 <script>
-                delbtn = document.querySelector('#add');
-                console.log(delbtn);
-                delbtn.onclick = function(event){
+                // delbtn = document.querySelector('#add');
+                // console.log(delbtn);
+                // delbtn.onclick = function(event){
         
-                   confirm("Estas seguro de agregar este Pokémon?");
+                //    confirm("Estas seguro de agregar este Pokémon?");
                     
         
+                // }
+
+
+
+
+                function editarDatos(event){
+        
+        event.preventDefault();
+        const form = document.querySelector('#formu');
+
+        
+        const datos = {
+            'name': form.elements[1].value,
+            'weight': form.elements[2].value,
+            'height': form.elements[3].value,
+            'type': form.elements[4].value,
+            'evolves': form.elements[5].value,
+        };
+        console.log(datos)
+        
+        fetch('/api/add', {
+            method: 'PATCH',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(datos),
+            
+        })
+        .then(function(response) {
+            return response.json();
+            
+        })
+        .then(function(data){
+                if(data){
+                                        Swal(
+                'Good job!',
+                'Pokemon added!',
+                'success'
+                )
+                setTimeout(function(){
+
+                window.location.href = '{{url('/pokemon')}}';
+
+        },2000)
+                
                 }
+
+          
+        })
+        .catch(function(error){
+            
+
+                                      Swal(
+                'Error!',
+                'You clicked the button!',
+                'Error'
+                )
+            
+            
+        });   
+        
+        
+    }
                
         
                

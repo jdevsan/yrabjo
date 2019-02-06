@@ -82,6 +82,8 @@
 
 
 <button href="/pokemon/" class="btn btn-info" >Volver</button>
+<div id="api">
+</div>
 <script>
     delbtn = document.querySelector('#del');
     console.log(delbtn);
@@ -92,6 +94,55 @@
         
     }
     
+
+
+      
+      fetch('{{url('/api/Pokemon')}}').then(response => {
+        return response.json();
+    }).then(data => {
+        console.log(data)
+        const apipoke = document.querySelector('#api');
+        for( let i = 0; i < data.length; i ++){
+              api.innerHTML += 
+    `<table class="container-fluid">
+    <div class="row">
+   
+        <thead>
+          <tr>
+            
+            <th>Name</th>
+            <th>Weigth</th>
+            <th>Heigth</th>
+            <th>Type</th>
+            <th>Evolves</th>
+            
+          </tr>
+         
+        </thead>
+
+        
+        <tbody>
+            <hr>
+          <tr>  
+          <td>` + data[i].name +`</td>`+`<td>`+data[i].weight+`</td>`+`<td>`+data[i].height+`</td>` +`<td>`+data[i].type_id+`</td>` +`<td>`+ data[i].evolves +`<td> 
+          </tr>
+          
+           
+        
+        </tbody>
+      </table>`
+             
+
+
+        }
+        
+              
+             
+                
+        
+    }).catch(err => {
+        
+    });
     
     
     

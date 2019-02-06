@@ -31,7 +31,12 @@
           <td>@foreach($poke as $pokes){{$pokes->weight}}<br> @endforeach</td>
           <td>@foreach($poke as $pokes){{$pokes->height}}<br> @endforeach</td>
           
-          <td>@foreach($poke as $pokes){{App\Type::find($pokes->type_id)->name}}<br> @endforeach</td>
+          <td>@foreach($poke as $pokes)
+            @if(isset($pokes->type_id) && $pokes->id !== null)
+            {{App\Type::find($pokes->type_id)->name}}<br> 
+            @endif
+          @endforeach</td>
+        
           <td>@foreach($poke as $pokes){{$pokes->evolves}}<br> @endforeach</td>
           <td>@foreach($poke as $pokes)<a href="editar/{{$pokes->id}}">Editar</a><br> @endforeach</td>
           <td>@foreach($poke as $pokes)<a href="pokemon/{{$pokes->id}}">Ver</a><br> @endforeach</td>
