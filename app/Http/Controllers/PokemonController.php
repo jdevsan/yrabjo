@@ -74,7 +74,7 @@ class PokemonController extends Controller
     {
             
             $pokes = Pokemon::find($pokemon);
-            return view('pokemon.id',['poke'=>$pokes]);
+            return view('Pokemon.id',['poke'=>$pokes]);
            }
         //
     
