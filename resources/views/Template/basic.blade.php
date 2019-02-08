@@ -21,7 +21,7 @@
 <body>
   <div class="full-height">
     <nav class="main-nav">
-      @logo(['url' => '{{ route('Type.welcome') }}'])
+      @logo(['url' => '{{ route("indice") }}'])
         Laramon
       @endlogo
       <ul class="main-nav_links">
