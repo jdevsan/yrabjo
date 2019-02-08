@@ -156,13 +156,13 @@ class PokemonController extends Controller
     public function edit($id){
         $poke = Pokemon::find($id);
 
-        return view('pokemon.index',['poke' => $poke]);
+        return view('Pokemon.index',['poke' => $poke]);
     }
 
     public function evolv(){
             $poke = Pokemon::all();
 
-            return view('pokemon.create',['poke' => $poke]);
+            return view('Pokemon.create',['poke' => $poke]);
 
     }
 
