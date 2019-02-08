@@ -47,17 +47,7 @@ Route::patch('/add', function(Request $request){
         return response()->json($data);
     }
 
-    // if (isset($request['name'])) {
-    //     $user->name = $request['name'];
-    // }
-
-    // if (isset($request['email'])) {
-    //     $user->email = $request['email'];
-    // }
-
-    // if (isset($request['phone'])) {
-    //     $user->phone = $request['phone'];
-    // }
+    
 
     else{
 

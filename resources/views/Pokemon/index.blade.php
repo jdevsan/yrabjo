@@ -103,7 +103,7 @@
         console.log(data)
         const apipoke = document.querySelector('#api');
         for( let i = 0; i < data.length; i ++){
-              api.innerHTML += 
+              apipoke.innerHTML += 
     `<table class="container-fluid">
     <div class="row">
    
